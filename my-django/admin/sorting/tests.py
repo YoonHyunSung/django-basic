@@ -6,6 +6,19 @@ import unittest
 from admin.sorting.models import MySum, Palindrome
 
 
+class TestPalindrome(unittest.TestCase):
+    def test_str_to_list(self):
+        instance = Palindrome()
+        instance.input_string = 'abcd'
+        res1 = instance.isPalindrome()
+        self.assertEqual(res1, {'RESULT': False})
+
+    def test_reverse_string(self):
+        instance = Palindrome()
+        instance.input_string = 'abcd'
+        res = instance.reverse_string()
+        self.assertEqual(res, ['d', 'c', 'b', 'a'])
+
 class TestMySum(unittest.TestCase):
 
     def test_one_to_ten_sum_1(self):
@@ -16,17 +29,5 @@ class TestMySum(unittest.TestCase):
         print(f'My Expected Value is {res}')
         self.assertEqual(res, 55)
 
-class TestPalindrome(unittest.TestCase):
-
-    def test_str_to_list(self):
-        print(f'{Palindrome.str_to_list("A man, a plan, a canal: Panama")}')
-        Palindrome.input_list = Palindrome.str_to_list("A man, a plan, a canal: Panama")
-        plist = Palindrome.input_list
-        self.assertEqual(plist[0], 'A')
-    def test_isPalindrome(self):
-        Palindrome.input_list = Palindrome.str_to_list("A man, a plan, a canal: Panama")
-        dict = Palindrome.isPalindrome(Palindrome.input_list)
-        print(f'test_isPalindrome : {dict["RESULT"]}')
 if __name__ == '__main__':
     unittest.main()
-
